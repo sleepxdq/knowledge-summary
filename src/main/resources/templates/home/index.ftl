@@ -6,11 +6,7 @@
 </head>
 <body>
     <div>
-        <form>
-            <label><input type="text" name="username" placeholder="Username" /><br/></label>
-            <label><input type="password" name="password" placeholder="password"/><br/></label>
-            <label><input type="submit" value="登录"><br/></label>
-        </form>
+        welcome ${user}  to index!
     </div>
 </body>
 </html>

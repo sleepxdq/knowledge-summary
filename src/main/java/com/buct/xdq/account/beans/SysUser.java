@@ -50,4 +50,12 @@ public class SysUser {
      */
     private String status;
 
+    public SysUser() {}
+
+    public SysUser(String username, String password) {
+        this.username = username;
+        this.password = password;
+        this.lastLoginTime = new Date();
+        this.status = "1";
+    }
 }
