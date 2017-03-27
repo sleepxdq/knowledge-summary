@@ -6,7 +6,7 @@
 </head>
 <body>
     <div>
-        welcome ${user}  to index!
+        welcome ${account}  to index!
     </div>
 </body>
 </html>

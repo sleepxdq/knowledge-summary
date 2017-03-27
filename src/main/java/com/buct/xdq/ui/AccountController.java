@@ -1,9 +1,9 @@
 package com.buct.xdq.ui;
 
 
-import com.buct.xdq.account.beans.SysUser;
 import com.buct.xdq.account.service.SysUserService;
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,13 +29,15 @@ public class AccountController {
 
     @RequestMapping(value = "login", method = RequestMethod.POST)
     public String submitLogin(String username, String password, Map<String, Object> map){
-//        Subject subject = SecurityUtils.getSubject();
-        SysUser user = new SysUser(username, password);
-        userService.create(user);
-        SysUser showUser = userService.findUser(username, password);
-        System.out.println(showUser);
-        map.put("user", showUser);
-        return "home/index";
+        Subject subject = SecurityUtils.getSubject();
+        UsernamePasswordToken token = new UsernamePasswordToken(username, password);
+        try {
+            subject.login(token);
+            map.put("account", token.getUsername());
+            return "home/index";
+        } catch (Exception e) {
+            return "account/login";
+        }
     }
 
 }
