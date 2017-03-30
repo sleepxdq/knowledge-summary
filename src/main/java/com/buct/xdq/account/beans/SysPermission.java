@@ -16,6 +16,6 @@ public class SysPermission {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    private String permission;
+    private String PermissionName;
 
 }

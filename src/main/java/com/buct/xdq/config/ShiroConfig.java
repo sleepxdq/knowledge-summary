@@ -1,5 +1,7 @@
 package com.buct.xdq.config;
 
+import com.buct.xdq.account.service.SysPermissionService;
+import com.buct.xdq.account.service.SysRoleService;
 import com.buct.xdq.account.service.SysUserService;
 import com.buct.xdq.account.shiro.MyRealm;
 import org.apache.shiro.mgt.SecurityManager;
@@ -25,9 +27,15 @@ public class ShiroConfig {
 
     private final SysUserService userService;
 
+    private final SysRoleService roleService;
+
+    private final SysPermissionService permissionService;
+
     @Autowired
-    public ShiroConfig(SysUserService userService) {
+    public ShiroConfig(SysUserService userService, SysRoleService roleService, SysPermissionService permissionService) {
         this.userService = userService;
+        this.roleService = roleService;
+        this.permissionService = permissionService;
     }
 
     /**
@@ -62,7 +70,7 @@ public class ShiroConfig {
     }
 
     public MyRealm myRealm(){
-        return new MyRealm(userService);
+        return new MyRealm(userService, roleService, permissionService);
     }
 
 }
