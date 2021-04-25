@@ -1,0 +1,22 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /redis
+spring:
+  application:
+    name: redis
+  jackson:
+    time-zone: GMT+8
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-path: ${server.servlet.context-path}/actuator/health
+  data:
+    mongodb:
+      uri: mongodb://root:123456@127.0.0.1:27017/admin
+      database: l2l-xdq

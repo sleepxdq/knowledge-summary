@@ -1,0 +1,13 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /consule
+spring:
+  application:
+    name: consule-sample
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        health-check-path: ${server.servlet.context-path}/actuator/health
