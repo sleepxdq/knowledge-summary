@@ -3,7 +3,6 @@ package com.xdq.redis.lottery
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import kotlin.concurrent.thread
 
 /**
  *
@@ -19,10 +18,6 @@ class LotteryDrawApi(
 
     @PostMapping("/_draw")
     fun draw() {
-        var i = 120
-        while (i > 0) {
-            drawService.draw()
-            i--
-        }
+        drawService.draw()
     }
 }

@@ -2,8 +2,6 @@ package com.xdq.redis.lottery
 
 import com.xdq.redis.lottery.repository.PrizeRepository
 import org.redisson.api.RedissonClient
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 
 /**
@@ -14,18 +12,23 @@ import org.springframework.stereotype.Service
  **/
 @Service
 class LotteryDrawService(
-    private val client: RedissonClient,
+    private val redClient: RedissonClient,
     private val prizeRepository: PrizeRepository
 ) {
 
+//    @Synchronized
     fun draw() {
-        val prize = prizeRepository.findDistinctByName("Prize1")
-        prize.reduce()
-        prizeRepository.save(prize)
+        val lock = redClient.getLock("Lottery")
+        if (lock.tryLock()) {
+            try {
+                val prize = prizeRepository.findDistinctByName("Prize1")
+                prize.reduce()
+                prizeRepository.save(prize)
+            } finally {
+                lock.unlock()
+            }
+        }
+
     }
 
-}
-
-fun sleep() {
-    Thread.sleep(10)
 }

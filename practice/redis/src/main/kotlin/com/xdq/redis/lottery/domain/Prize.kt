@@ -1,6 +1,5 @@
 package com.xdq.redis.lottery.domain
 
-import com.xdq.redis.lottery.sleep
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.data.annotation.Id
@@ -22,7 +21,6 @@ class Prize {
 
     fun reduce() {
         if (stock > 0) {
-            sleep()
             stock -= 1
         }
         log.info("${Thread.currentThread().name}:$stock")
