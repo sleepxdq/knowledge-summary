@@ -11,5 +11,5 @@
 ![任务周期模型](http://assets.processon.com/chart_image/608adcd7e0b34d47a7146064.png)
 
 ### 实践
-1. 非Spring容器下使用，见[代码示例](/src/main/java/com/xdq/observer/Main.java)
+1. 非Spring容器下使用，见[代码示例](./src/main/java/com/xdq/observer/Main.java)
 2. 如何在Spring容器中使用
