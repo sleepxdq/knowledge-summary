@@ -3,7 +3,7 @@
 ## 架构设计
 ### [设计模式](./design-patterns/README.md)
 
-## [面试](./interview/README.md)
+## [面试](points/README.md)
 
 ## [测试](./测试/README.MD)
 
