@@ -1,5 +1,9 @@
 package com.xdq.t11;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -14,6 +18,13 @@ class Main {
     public static void main(String[] args) throws InterruptedException {
         LinkedBlockingQueue<Integer> q = new LinkedBlockingQueue();
         Object lock = new Object();
+
+        Set<String> names = new HashSet<>();
+        names.add("xdq");
+        Set<String> ages = new TreeSet<>();
+        ages.add("12");
+        Set<String> d2= new LinkedHashSet<>();
+        d2.add("aa");
 
         new Thread(new Producer(q, lock)).start();
         new Thread(new Consumer(q, lock, "C1")).start();
